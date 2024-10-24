@@ -1,0 +1,268 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    /* General Styles */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html, body {
+        font-family: 'Poppins', sans-serif;
+        height: 100%;
+        overflow-x: hidden; 
+    }
+
+    /* Body styling */
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        background: #f2f2f2;
+    }
+
+    header {
+        background: rgba(230, 227, 227, 0.9);
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        display: flex; /* Change to flex for better alignment */
+        align-items: center; /* Center items vertically */
+    }
+
+    .logo {
+        margin-right: 2rem; /* Space between logo and navbar */
+    }
+
+    .logo-img {
+        height: 110px;
+        width: auto;
+        max-width: 110px; 
+        object-fit: contain; 
+    }
+
+    .navbar {
+        flex-grow: 1; /* Allow navbar to take up remaining space */
+        display: flex;
+        justify-content: flex-end; /* Align navbar to the right */
+        align-items: center;
+    }
+
+    .nav-links {
+        list-style: none;
+        display: flex;
+        align-items: center;
+    }
+
+    .nav-links li {
+        margin-right: 20px;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: #7c3b59;
+        font-size: 1.2rem;
+        font-weight: bold;
+        transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+        color: rgb(50, 2, 60);
+    }
+
+    .container {
+        width: 100%;
+        padding-top: 5rem; 
+    }
+
+    .section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        padding-top: 5rem;
+    }
+
+    #home {
+        background-image: url("{% static 'features/images/v2osk-C68WT0YKGxo-unsplash.jpg' %}");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    #about {
+        background-image: url("{% static 'features/images/arteum-ro-bGlH3TIzGGE-unsplash.jpg' %}");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat; 
+    }
+
+    #engage {
+        background-image: url("{% static 'features/images/pexels-ken-cheung-3355734-6559897.jpg' %}");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat; 
+    }
+
+    #elements {
+        background-image: url("{% static 'features/images/pexels-bri-schneiter-28802-346529.jpg' %}"); 
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .section .content {
+        color: rgb(2, 2, 2);
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.8); 
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        max-width: 800px; 
+        text-align: center; 
+    }
+
+    .quote-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #32023c;
+        padding: 2rem;
+        border-radius: 10px;
+        text-align: center; 
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-get-started, .btn-explore-features {
+        display: inline-block;
+        margin-top: 2rem; 
+        padding: 0.7rem 1.5rem;
+        background-color: #32023c;
+        color: white;
+        border-radius: 30px;
+        text-decoration: none;
+        font-size: 1.1rem;
+        transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-get-started:hover, .btn-explore-features:hover {
+        background-color: #24093e;
+        transform: scale(1.05); 
+    }
+
+    footer {
+        text-align: center;
+        color: #fff;
+        position: fixed;
+        bottom: 10px;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 1rem;
+    }
+
+    /* Media Queries for Responsiveness */
+    @media (max-width: 768px) {
+        .nav-links li {
+            margin-right: 10px; /* Reduce space for smaller screens */
+        }
+
+        .section .content {
+            padding: 1.5rem; /* Reduce padding on smaller screens */
+        }
+
+        .btn-get-started {
+            padding: 0.5rem 1rem; /* Smaller button size */
+        }
+
+        .logo-img {
+            width: 150px; /* Adjust size as needed */
+            height: auto;
+        }
+    }
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eunoia - Mental Health Monitoring</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
+  
+</head>
+<body>
+  <!-- Background Animation -->
+  <div class="background-animation">
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+  </div>
+
+  <div class="container">
+    <!-- Header and Navigation -->
+    <header>
+      <div class="logo">
+        <img src="{% static 'features/images/WhatsApp_Image_2024-10-12_at_10.08.50_AM-removebg-preview.png' %}" alt="Eunoia Logo" class="logo-img">
+      </div>
+      <div class="navbar">
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#engage">Engage</a></li>
+          <li><a href="#elements">Elements</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <section id="home" class="section">
+      <!-- Caring Cloud Container -->
+      <div class="content">
+        <p style="font-style: italic; font-size: 1.1rem;">"Love yourself first, and everything else will fall into place."</p>
+        <a href="{% url 'login' %}" class="btn-get-started">Get Started</a>
+      </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="section">
+      <div class="content about-section">
+        <h1>ABOUT US</h1>
+        <h2>Eunoia (εὔνοια) - Greek word that means "a well mind." [yoo-NOY-uh]</h2>
+        <p>
+          At Eunoia, we believe mental health is just as important as physical health!<br>
+          Our mission?<br>
+          To offer a simple, sustainable way for you to nurture your well-being. Whether you need daily check-ins or long-term tracking, Eunoia is here to support your journey of growth and reflection every step of the way!
+        </p>
+      </div>
+    </section>
+
+    <!-- Engage Section -->
+    <section id="engage" class="section">
+      <div class="content">
+        <h2>Engage</h2>
+        <p>
+          Take a break from the hustle and find your calm. Explore our breathwork techniques, soundscapes to help you unwind, and an integrated social media feed to stay connected with like-minded people on the journey of wellness.
+        </p>
+        <!-- Button to redirect to features page -->
+        <a href="{% url 'feature' %}" class="btn-explore-features">Explore Features</a>
+      </div>
+    </section>
+
+    <!-- Elements Section -->
+    <section id="elements" class="section">
+      <div class="content">
+        <h2>Elements</h2>
+        <p>Explore the essential features of Eunoia that will help you take charge of your mental health journey.</p>
+        <a href="{% url 'elements' %}" class="btn-explore-features">Explore Elements</a>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Eunoia. All rights reserved.</p>
+  </footer>
+</body>
+</html>

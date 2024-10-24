@@ -1,0 +1,202 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    font-family: 'Poppins', sans-serif;
+    height: 100%;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Body styling */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background: #f2f2f2;
+}
+
+/* Header and Navigation Styling */
+header {
+    background: rgba(230, 227, 227, 0.9);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    padding: 1rem 2rem;
+}
+
+/* Logo Styling */
+.logo {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.logo-img {
+    height: 50px; /* Adjust to your preferred size */
+    width: auto;
+    max-width: 100px; /* Ensure it doesn’t become too wide */
+    object-fit: contain; /* Ensures the aspect ratio is maintained */
+}
+
+/* Navigation Bar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Navigation Links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.nav-links li {
+    margin-right: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #7c3b59;
+    font-size: 1.2rem;
+    font-weight: bold; /* Added to make the font bold */
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: rgb(50, 2, 60);
+}
+
+/* Main Container */
+.container {
+    width: 100%;
+    padding-top: 5rem; /* To offset fixed header */
+}
+
+/* Section Styles with Background Images */
+.section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding-top: 5rem;
+}
+
+#home {
+    background-image: url('C:/Users/Priyanga%20N/Downloads/v2osk-C68WT0YKGxo-unsplash.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#about {
+    background-image: url('C:/Users/Priyanga%20N/Downloads/arteum-ro-bGlH3TIzGGE-unsplash.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; /* Add your actual image path */
+}
+
+#engage {
+    background-image: url('C:/Users/Priyanga%20N/Downloads/pexels-therato-28674739.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; /* Add your actual image path */
+}
+
+#elements {
+    background-image: url(); /* Add your actual image path */
+}
+
+/* Section Content Styling */
+.section .content {
+    color: rgb(2, 2, 2);
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.8); /* Slightly more opaque for readability */
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    max-width: 800px; /* Limit width for better readability */
+    text-align: center; /* Center text for better presentation */
+}
+
+/* Quote Container */
+.quote-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #32023c;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Button Styling */
+.btn-get-started {
+    display: inline-block;
+    margin-top: 2rem; /* Adjust to fit your layout */
+    padding: 0.7rem 1.5rem;
+    background-color: #32023c;
+    color: white;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-get-started:hover {
+    background-color: #24093e;
+    transform: scale(1.05); /* Add a slight scale effect */
+}
+.btn-explore-features {
+    display: inline-block;
+    margin-top: 2rem; /* Adjust to fit your layout */
+    padding: 0.7rem 1.5rem;
+    background-color: #32023c;
+    color: white;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-explore-features:hover {
+    background-color: #24093e;
+    transform: scale(1.05); /* Add a slight scale effect */
+}
+/* Footer Styling */
+footer {
+    text-align: center;
+    color: #fff;
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 1rem;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .nav-links li {
+        margin-right: 10px; /* Reduce space for smaller screens */
+    }
+
+    .section .content {
+        padding: 1.5rem; /* Reduce padding on smaller screens */
+    }
+
+    .btn-get-started {
+        padding: 0.5rem 1rem; /* Smaller button size */
+    }
+
+    .logo-img {
+        height: 40px; /* Adjust logo size for smaller screens */
+    }
+}

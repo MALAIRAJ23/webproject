@@ -1,0 +1,89 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soundscapes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            text-align: center;
+        }
+        .audio-container {
+            margin: 20px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center; /* Center text */
+        }
+        .audio-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .audio-description {
+            margin-bottom: 20px;
+            font-size: 16px;
+            color: #666;
+        }
+        .video-container {
+            position: relative;
+            overflow: hidden; /* Hide overflow */
+            padding-top: 56.25%; /* Aspect ratio 16:9 */
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0; /* Remove border */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Soundscapes</h1>
+
+    <div class="audio-container">
+        <h2 class="audio-title">Calming Ocean Waves</h2>
+        <p class="audio-description">Enjoy this calming soundscape to enhance your focus.</p>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/E7qRkUYu580" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <div class="audio-container">
+        <h2 class="audio-title">Embrace the Serenity of Rain</h2>
+        <p class="audio-description">Experience the calming embrace of gentle rain sounds, perfect for relaxation and meditation.</p>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/q76bMs-NwRk" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <div class="audio-container">
+        <h2 class="audio-title">Soothing Piano Music</h2>
+        <p class="audio-description">Relax with gentle piano melodies.</p>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/MYPVQccHhAQ" allowfullscreen></iframe>
+        </div>
+    </div>
+    <div class="audio-container">
+        <h2 class="audio-title">Soothing Piano Music</h2>
+        <p class="audio-description">Relax with gentle piano melodies.</p>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/VDuFYROXQfg" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <!-- Add more audio sections as needed -->
+
+</body>
+</html>

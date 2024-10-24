@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Are You In The Mood For?</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #a48da6;
+            font-size: 2.5rem;
+        }
+
+        .options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .option {
+            margin: 10px;
+            padding: 15px 25px;
+            background-color: #a48da6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-size: 1rem;
+        }
+
+        .option:hover {
+            background-color: #a48da6;
+            transform: scale(1.05);
+        }
+
+        .links {
+            margin-top: 20px;
+            display: none;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .scroll-container {
+            display: flex;
+            overflow: hidden;
+            width: 100%;
+            position: relative;
+        }
+
+        .video-container {
+            display: flex;
+            width: 100%;
+            flex-shrink: 0;
+            animation: scroll 20s linear infinite;
+        }
+
+        .video {
+            flex-shrink: 0;
+            width: 100vw; /* Fill the screen width */
+            padding: 10px;
+            background-color: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h3 {
+            margin: 10px 0;
+            color: #333;
+            font-size: 1.2rem;
+        }
+
+        iframe {
+            width: 100%;
+            height: 80vh; /* Fill most of the viewport height */
+            border: none;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .option {
+                width: 100%;
+                text-align: center;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .option {
+                font-size: 0.9rem;
+            }
+
+            iframe {
+                height: 60vh; /* Adjust for smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>What Are You In The Mood For?</h1>
+
+    <div class="options">
+        <button class="option" onclick="showLinks('calm')">Calm Activities</button>
+        <button class="option" onclick="showLinks('adventurous')">Adventurous Activities</button>
+        <button class="option" onclick="showLinks('creative')">Creative Activities</button>
+        <button class="option" onclick="showLinks('social')">Social Activities</button>
+        <button class="option" onclick="showLinks('physical')">Physical Activities</button>
+    </div>
+
+    <div class="links" id="links"></div>
+
+    <script>
+        function showLinks(mood) {
+    const linksDiv = document.getElementById('links');
+    linksDiv.innerHTML = ''; // Clear previous links
+
+    let videos = [];
+    
+
+    switch(mood) {
+        case 'calm':
+            videos = [
+                {title: 'Meditation for Beginners', embed: 'pitV-DlcrcE'},
+                {title: 'Gentle Yoga Flow', embed: 'A9F2jdMvk0s'},
+                {title: 'Reading', embed: 'Z1Mz_3P4_pk' },
+                {title: 'Guided Relaxation',embed: 'bS-Wh8b31M4'},
+            ];
+            break;
+        case 'adventurous':
+            videos = [
+                {title: 'Backyard Camping', embed: '4M_yw7p9H8M'},
+                {title: 'Fitness Challenges', embed: '-bZiCHewoWM'},
+            ];
+            break;
+        case 'creative':
+            videos = [
+                {title: 'Beginner Painting Tutorial', embed:'7_3Mm8py5O0'},
+                {title: 'DIY Craft Ideas', embed: 'IDNH28PPx2M'},
+                {title: 'Creative Writing Prompts', embed: 'urJDbQl5W0I'},
+                {title: 'Poetry Basics', embed: '7mhd6Mj0QtM'},
+                {title: 'Photography Tips for Beginners', embed: 'ixRKeQMa7Nc'},
+            ];
+            break;
+        case 'social':
+            videos = [
+                {title: 'How to Make Friends', embed: 'BkPe4vT3NfI'},
+                {title: 'Stop doom scrolling', embed: '3a3Nv2aQqyo'},
+                {title: 'Screen detox', embed: 'fzkizSWouvo'},
+                {title: 'Staying sane', embed: 'xFvloWKYJpg'},
+            ];
+            break;
+        case 'physical':
+            videos = [
+                {title: 'Pilates workout', embed: '3gNTz583bo8'},
+                {title: 'Dance Fitness', embed: 'MwHtUKyLrac'},
+                {title: 'Yoga for Beginners', embed: 'uIdP4ctzKTk'},
+                {title: 'Cardio Workout', embed: 'kZDvg92tTMc'},
+            ];
+            break;
+        default:
+            videos = [];
+    }
+
+    // Display the videos
+    if (videos.length > 0) {
+        linksDiv.style.display = 'block';
+        linksDiv.innerHTML = `<h2>${mood.charAt(0).toUpperCase() + mood.slice(1)} Activities:</h2>`;
+        linksDiv.innerHTML += `<div class="scroll-container"><div class="video-container">`; // Start scroll container and video container
+
+        videos.forEach(video => {
+            linksDiv.innerHTML += `
+                <div class="video">
+                    <h3>${video.title}</h3>
+                    <iframe src="https://www.youtube.com/embed/${video.embed}" 
+                            frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
+                            encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                    </iframe>
+                </div>
+            `;
+        });
+
+        linksDiv.innerHTML += `</div></div>`; // End video container and scroll container
+    } else {
+        linksDiv.style.display = 'none';
+    }
+}
+
+    </script>
+    
+</body>
+</html>

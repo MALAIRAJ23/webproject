@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #a3c2f0, #dfaece); /* Soft gradient background */
+            background-size: 400% 400%; /* For animation */
+            animation: gradientAnimation 10s ease infinite; /* Animation for the gradient */
+            color: #0b0b0b; /* Change text color to dark for contrast */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background for the container */
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            width: 80%;
+            max-width: 400px;
+        }
+
+        h1 {
+            color: #2196f3; /* Light blue color */
+            margin-bottom: 20px;
+        }
+
+        .breathing-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+        }
+
+        .circle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: #2196f3; /* Blue color for the circle */
+            color: rgb(255, 255, 255);
+            font-size: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .instructions {
+            margin-top: 20px;
+        }
+
+        .controls {
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #42a5f5; /* Light blue button color */
+            color: white;
+            cursor: pointer;
+        }
+
+        button:disabled {
+            background-color: #90caf9; /* Light disabled button color */
+            cursor: not-allowed;
+        }
+
+        @keyframes inhale {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.4); /* Increase scale factor for inhale */
+            }
+        }
+
+        @keyframes exhale {
+            0% {
+                transform: scale(1.4); /* Start from enlarged scale */
+            }
+            100% {
+                transform: scale(1); /* Return to original scale */
+            }
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breathing Meditation</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Guided Breathing Meditation</h1>
+        <div class="breathing-box" id="breathingBox">
+            <div class="circle" id="circle">Inhale</div>
+        </div>
+        <div class="controls">
+            <button id="start">Start</button>
+            <button id="stop" disabled>Stop</button>
+        </div>
+        <p class="instructions">Breathe in deeply through your nose and out through your mouth.</p>
+    </div>
+
+    <script>
+        let breathingInterval;
+        const circle = document.getElementById('circle');
+        const startButton = document.getElementById('start');
+        const stopButton = document.getElementById('stop');
+
+        startButton.addEventListener('click', () => {
+            startBreathing();
+            startButton.disabled = true;
+            stopButton.disabled = false;
+        });
+
+        stopButton.addEventListener('click', () => {
+            stopBreathing();
+            startButton.disabled = false;
+            stopButton.disabled = true;
+        });
+
+        function startBreathing() {
+            let inhaleDuration = 4000; // 4 seconds for inhale
+            let exhaleDuration = 6000; // 6 seconds for exhale
+
+            // Start the first breathing cycle immediately
+            breathe(inhaleDuration, exhaleDuration);
+
+            // Set interval for subsequent cycles
+            breathingInterval = setInterval(() => {
+                breathe(inhaleDuration, exhaleDuration);
+            }, inhaleDuration + exhaleDuration);
+        }
+
+        function breathe(inhaleDuration, exhaleDuration) {
+            circle.textContent = "Inhale";
+            circle.style.animation = 'inhale 4s forwards';
+            
+            setTimeout(() => {
+                circle.textContent = "Exhale";
+                circle.style.animation = 'exhale 6s forwards';
+            }, inhaleDuration);
+        }
+
+        function stopBreathing() {
+            clearInterval(breathingInterval);
+            circle.style.animation = 'none';
+            circle.textContent = "Inhale"; // Reset text
+        }
+    </script>
+</body>
+</html>

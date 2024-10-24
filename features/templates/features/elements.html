@@ -1,0 +1,190 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elements Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #a48da6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        /* Grid layout for the cards */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid */
+            gap: 100px;
+        }
+
+        /* Perspective for the card flip */
+        .card {
+            perspective: 1000px;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center-align the card and button */
+            position: relative; /* Ensures button stays above the card */
+        }
+
+        /* Style for the card (image container) */
+        .image-container {
+            width: 100%;
+            max-width: 300px;
+            height: 350px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+            z-index: 1; /* Card sits behind the button */
+        }
+
+        .image-container.flipped {
+            transform: rotateY(180deg);
+        }
+
+        /* Front and back faces of the card */
+        .image-container img,
+        .image-container .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 8px;
+            top: 0;
+            left: 0;
+        }
+
+        /* Front image */
+        .image-container img {
+            object-fit: cover;
+        }
+
+        /* Back face with description */
+        .card-back {
+            background-color: #fff;
+            color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: rotateY(180deg);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        /* Button styling */
+        .image-button {
+            background-color: #5f056d;
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            max-width: 300px;
+            border-radius: 0 0 8px 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px; /* Negative margin to position the button over the card */
+            position: relative;
+            z-index: 2; /* Button stays above the card */
+        }
+
+        .image-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .image-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+
+            .image-container {
+                height: 300px;
+            }
+
+            .image-button {
+                padding: 10px;
+                margin-top: -40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .image-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .image-container {
+                height: 250px;
+            }
+
+            .image-button {
+                font-size: 14px;
+                padding: 6px;
+                margin-top: -30px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Explore Our Elements</h1>
+        <div class="image-grid">
+            <!-- Card 1 -->
+            <div class="card">
+                <div class="image-container" onclick="flipCard(this)">
+                    <img src="{% static 'features/images/study.jpeg' %}" alt="Exam Mood Boost">
+                    <div class="card-back">
+                        <p>The Exam Mood Booster is your cozy little helper for exam time! It’s packed with cheerful quotes, fun tips, and gentle reminders to brighten your mood and keep you feeling good while you study. Think of it as a friendly boost when you’re feeling a little stressed—like a warm hug in the middle of your study marathon!</p>
+                    </div>
+                </div>
+                <button class="image-button" onclick="window.location.href='{% url 'examboost' %}'">EXAM MOOD BOOST</button>
+
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card">
+                <div class="image-container" onclick="flipCard(this)">
+                    <img src="{% static 'features/images/journal.jpeg' %}" alt="Journal and Affirm & Manifest">
+                    <div class="card-back">
+                        <p>The Daily Journal & Affirmations is your happy little corner to share all your thoughts, dreams, and feelings. After each journal entry, it sends you the sweetest affirmations and magical manifestations, like tiny love notes just for you! It’s like having a sparkly friend who always knows the right words to lift you up and fill your heart with good vibes! </p>
+                    </div>
+                </div>
+                <button class="image-button" onclick="window.location.href='{% url 'process_journal_entry' %}'">AFFIRM AND MAINFEST</button>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card">
+                <div class="image-container" onclick="flipCard(this)">
+                    <img src="{% static 'features/images/activities.jpeg' %}" alt="Explore Activities">
+                    <div class="card-back">
+                        <p>The Activity Suggestion Hub is your go-to place for fun and uplifting activities! It offers curated YouTube links and ideas, whether you need a quick workout, a soothing meditation, or a creative project to unwind. It’s like having a friendly guide who always knows the perfect activity to brighten your day and keep you energized! </p>
+                    </div>
+                </div>
+                <button class="image-button" onclick="window.location.href='{% url 'activities' %}'">DON'T BE BORED</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function flipCard(card) {
+            card.classList.toggle('flipped');
+        }
+    </script>
+</body>
+
+</html>
